@@ -22,4 +22,20 @@ class Product extends Model
     {
         return $this->status == Product::AVAILABLE_PRODUCT;
     }
+
+    public function seller()
+    {
+        return $this->belongsTo('App\Seller');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany('App\Transaction');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
+    }
+
 }
