@@ -16,10 +16,12 @@ class CategoryProductTable extends Migration
         Schema::create('category_product', function (Blueprint $table) {
             // $table->bigIncrements('id');
             // $table->timestamps();
-            $table->bigInteger('category_id')->unsinged();
-            $table->bigInteger('product_id')->unsinged();
+            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
+
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('product_id')->references('id')->on('products');
+
         });
     }
 
