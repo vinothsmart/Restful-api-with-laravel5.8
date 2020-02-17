@@ -16,8 +16,8 @@ class CategoryProductTable extends Migration
         Schema::create('category_product', function (Blueprint $table) {
             // $table->bigIncrements('id');
             // $table->timestamps();
-            $table->integer('category_id')->unsinged();
-            $table->integer('product_id')->unsinged();
+            $table->bigInteger('category_id')->unsinged();
+            $table->bigInteger('product_id')->unsinged();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('product_id')->references('id')->on('products');
         });
