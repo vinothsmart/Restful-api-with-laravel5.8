@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit352d1d7759d2054f67690868fef41c4f
+class ComposerStaticInitdd50a955b3f1831a7677e467f770deda
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -387,8 +387,6 @@ class ComposerStaticInit352d1d7759d2054f67690868fef41c4f
     );
 
     public static $classMap = array (
-        'App\\Buyer' => __DIR__ . '/../..' . '/app/Buyer.php',
-        'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -396,13 +394,7 @@ class ComposerStaticInit352d1d7759d2054f67690868fef41c4f
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
-        'App\\Http\\Controllers\\Buyer\\BuyerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Buyer/BuyerController.php',
-        'App\\Http\\Controllers\\Category\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Category/CategoryController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\Product\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Product/ProductController.php',
-        'App\\Http\\Controllers\\Seller\\SellerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Seller/SellerController.php',
-        'App\\Http\\Controllers\\Transaction\\TransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Transaction/TransactionController.php',
-        'App\\Http\\Controllers\\User\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -411,14 +403,11 @@ class ComposerStaticInit352d1d7759d2054f67690868fef41c4f
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\Seller' => __DIR__ . '/../..' . '/app/Seller.php',
-        'App\\Transaction' => __DIR__ . '/../..' . '/app/Transaction.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
@@ -4104,10 +4093,10 @@ class ComposerStaticInit352d1d7759d2054f67690868fef41c4f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit352d1d7759d2054f67690868fef41c4f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit352d1d7759d2054f67690868fef41c4f::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit352d1d7759d2054f67690868fef41c4f::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit352d1d7759d2054f67690868fef41c4f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitdd50a955b3f1831a7677e467f770deda::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitdd50a955b3f1831a7677e467f770deda::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitdd50a955b3f1831a7677e467f770deda::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitdd50a955b3f1831a7677e467f770deda::$classMap;
 
         }, null, ClassLoader::class);
     }
