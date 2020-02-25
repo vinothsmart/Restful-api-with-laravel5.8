@@ -2,6 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\User;
+use App\Seller;
 use App\Transaction;
 use Faker\Generator as Faker;
 
