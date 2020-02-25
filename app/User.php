@@ -3,13 +3,15 @@
 namespace App;
 
 use Illuminate\Support\Str;
+use App\Transformers\UserTransformer;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     const VERIFIED_USER ='1';
     const UNVERIFIED_USER ='0';
@@ -17,14 +19,18 @@ class User extends Authenticatable
     const ADMIN_USER = 'true';
     const REGULAR_USER = 'false';
 
+    public $transformer = UserTransformer::class;
+    protected $table = 'users';
+    protected $dates = ['deleted_at'];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
+        'name', 
+        'email', 
         'password',
         'verified',
         'verification_token',
@@ -37,9 +43,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password', 
         'remember_token',
-        'verification_token',
+        // 'verification_token'
     ];
 
     /**
@@ -50,6 +56,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setNameAttribute($name) {
+        $this->attributes['name'] = strtolower($name);
+    }
+
+    public function getNameAttribute($name) {
+        return ucwords($name);
+    }
+
+    public function setEmailAttribute($email) {
+        $this->attributes['email'] = strtolower($email);
+    }
 
     public function isVerified()
     {
@@ -65,5 +83,4 @@ class User extends Authenticatable
     {
         return Str::random(40);
     }
-
 }

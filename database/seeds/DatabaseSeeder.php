@@ -42,5 +42,5 @@ class DatabaseSeeder extends Seeder
                 $product->categories()->attach($categories);
             });
         factory(Transaction::class, $transactionsQuantity)->create();
-    }
+   }
 }

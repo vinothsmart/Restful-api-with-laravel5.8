@@ -8,5 +8,4 @@ class Seller extends User
     {
         return $this->hasMany('App\Product');
     }
-
 }
