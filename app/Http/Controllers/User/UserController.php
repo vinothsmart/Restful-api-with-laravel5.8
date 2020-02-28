@@ -45,21 +45,23 @@ class UserController extends ApiController
             'password' => 'required|min:6|confirmed',
         ];
 
-        $validator = Validator::make($request->all(), $rules);
+        $this->validate($request, $rules);
 
-        if($validator->fails()){
-            return response()->json(['error' => $validator->errors()], 422);
-        }
+        // $validator = Validator::make($request->all(), $rules);
 
-        $data = $request->all();
-        $data['password'] = bcrypt($request->password);
-        $data['verified'] = User::UNVERIFIED_USER;
-        $data['verification_token'] = User::generateVerificationCode();
-        $data['admin'] = User::REGULAR_USER;
+        // if($validator->fails()){
+        //     return response()->json(['error' => $validator->errors()], 422);
+        // }
 
-        $user = User::create($data);
+        // $data = $request->all();
+        // $data['password'] = bcrypt($request->password);
+        // $data['verified'] = User::UNVERIFIED_USER;
+        // $data['verification_token'] = User::generateVerificationCode();
+        // $data['admin'] = User::REGULAR_USER;
 
-        return $this->showOne($user, 201);
+        // $user = User::create($data);
+
+        // return $this->showOne($user, 201);
     }
 
     /**
