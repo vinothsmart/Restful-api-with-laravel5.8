@@ -47,11 +47,11 @@ class UserController extends ApiController
 
         $this->validate($request, $rules);
 
-        $validator = Validator::make($request->all(), $rules);
+        // $validator = Validator::make($request->all(), $rules);
 
-        if($validator->fails()){
-            return response()->json(['error' => $validator->errors()], 422);
-        }
+        // if($validator->fails()){
+        //     return response()->json(['error' => $validator->errors()], 422);
+        // }
 
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
