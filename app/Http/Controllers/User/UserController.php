@@ -47,21 +47,21 @@ class UserController extends ApiController
 
         $this->validate($request, $rules);
 
-        // $validator = Validator::make($request->all(), $rules);
+        $validator = Validator::make($request->all(), $rules);
 
-        // if($validator->fails()){
-        //     return response()->json(['error' => $validator->errors()], 422);
-        // }
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()], 422);
+        }
 
-        // $data = $request->all();
-        // $data['password'] = bcrypt($request->password);
-        // $data['verified'] = User::UNVERIFIED_USER;
-        // $data['verification_token'] = User::generateVerificationCode();
-        // $data['admin'] = User::REGULAR_USER;
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $data['verified'] = User::UNVERIFIED_USER;
+        $data['verification_token'] = User::generateVerificationCode();
+        $data['admin'] = User::REGULAR_USER;
 
-        // $user = User::create($data);
+        $user = User::create($data);
 
-        // return $this->showOne($user, 201);
+        return $this->showOne($user, 201);
     }
 
     /**
