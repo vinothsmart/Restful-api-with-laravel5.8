@@ -59,7 +59,8 @@ class Handler extends ExceptionHandler
             return $this->convertValidationExceptionToResponse($exception, $request);
         }
         if ($exception instanceof ModelNotFoundException) {
-            return $this->errorResponse("Does not exists any model with the specified identificator", 404);
+            $modelName = $exception->getModel();
+            return $this->errorResponse("Does not exists any {$modelName} with the specified identificator", 404);
         }
         return parent::render($request, $exception);
     }
