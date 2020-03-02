@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Category;
 
 use App\Category;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $catgories = Category::all();
+
+        return $this->showAll($catgories);
     }
 
     /**
@@ -26,6 +27,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -37,6 +39,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
@@ -48,6 +51,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
+        
     }
 
     /**
@@ -59,6 +63,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+        
     }
 
     /**
@@ -71,6 +76,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
+        
     }
 
     /**
@@ -82,5 +88,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        
     }
 }
+
