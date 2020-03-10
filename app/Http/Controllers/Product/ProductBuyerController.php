@@ -5,7 +5,7 @@ use App\Http\Controllers\ApiController;
 use App\Product;
 use Illuminate\Http\Request;
 
-class ProductTransactionController extends ApiController
+class ProductBuyerController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,14 @@ class ProductTransactionController extends ApiController
      */
     public function index(Product $product)
     {
-        $transactions = $product->transactions;
+        $buyers = $product->transactions()
+            ->with('buyer')
+            ->get()
+            ->pluck('buyer')
+            ->unique('id')
+            ->values();
 
-        return $this->showAll($transactions);
+        return $this->showAll($buyers);
     }
 }
 
