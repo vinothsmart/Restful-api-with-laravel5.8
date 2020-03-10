@@ -31,7 +31,7 @@ class ProductCategoryController extends ApiController
     public function update(Request $request, Product $product, Category $category)
     {
         //attach, sync, syncWithoutDetach
-        $product->categories()->attach([$category->id]);
+        $product->categories()->sync([$category->id]);
 
         return $this->showAll($product->categories);
     }
