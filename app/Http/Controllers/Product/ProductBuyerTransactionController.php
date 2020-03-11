@@ -54,9 +54,9 @@ class ProductBuyerTransactionController extends ApiController
             return $this->errorResponse('The product does not have enough units for this transaction', 409);
         }
 
-        return DB::transaction(function () use ($request, $product, $seller)
+        return DB::transaction(function () use ($request, $product, $buyer)
         {
-            $product->quantity == $request->quantity;
+            $product->quantity -= $request->quantity;
             $product->save();
 
             $transaction = Transaction::create(['quantity' => $request->quantity, 'buyer_id' => $buyer->id, 'product_id' => $product->id, ]);
