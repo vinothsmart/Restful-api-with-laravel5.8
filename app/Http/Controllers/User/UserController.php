@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\User;
 
 use App\User;
@@ -29,6 +28,7 @@ class UserController extends ApiController
     public function create()
     {
         //
+        
     }
 
     /**
@@ -39,20 +39,14 @@ class UserController extends ApiController
      */
     public function store(Request $request)
     {
-        $rules = [
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ];
+        $rules = ['name' => 'required', 'email' => 'required|email|unique:users', 'password' => 'required|min:6|confirmed', ];
 
         $this->validate($request, $rules);
 
         // $validator = Validator::make($request->all(), $rules);
-
         // if($validator->fails()){
         //     return response()->json(['error' => $validator->errors()], 422);
         // }
-
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $data['verified'] = User::UNVERIFIED_USER;
@@ -84,6 +78,7 @@ class UserController extends ApiController
     public function edit($id)
     {
         //
+        
     }
 
     /**
@@ -95,34 +90,36 @@ class UserController extends ApiController
      */
     public function update(Request $request, User $user)
     {
-        $rules = [
-            'email' => 'email|unique:users,email,' . $user->id,
-            'password' => 'required|min:6|confirmed',
-            'admin' => 'in:' . User::ADMIN_USER . ',' . User::REGULAR_USER,
-        ];
+        $rules = ['email' => 'email|unique:users,email,' . $user->id, 'password' => 'required|min:6|confirmed', 'admin' => 'in:' . User::ADMIN_USER . ',' . User::REGULAR_USER, ];
 
-        if($request->has('name')) {
+        if ($request->has('name'))
+        {
             $user->name = $request->name;
         }
 
-        if($request->has('email') && $user->email != $request->email) {
+        if ($request->has('email') && $user->email != $request->email)
+        {
             $user->verified = User::UNVERIFIED_USER;
             $user->verification_token = User::generateVerificationCode();
             $user->email = $request->email;
         }
 
-        if($request->has('password')) {
+        if ($request->has('password'))
+        {
             $user->password = bcrypt($request->password);
         }
 
-        if($request->has('admin')) {
-            if(!$user->isVerified()) {
+        if ($request->has('admin'))
+        {
+            if (!$user->isVerified())
+            {
                 return $this->errorResponse('Only Verified users can modify the admin field', 409);
             }
             $user->admin = $request->admin;
         }
 
-        if(!$user->isDirty()) {
+        if (!$user->isDirty())
+        {
             return $this->errorResponse('You need to specify a different value to update', 'code', 422);
         }
 
@@ -141,6 +138,21 @@ class UserController extends ApiController
     {
         $user->delete();
 
-        return response()->json(['data' => $user], 200);
+        return response()
+            ->json(['data' => $user], 200);
     }
+
+    public function verify($token)
+    {
+        $user = User::where('verification_token', $token)->firstOrFail();
+
+        $user->verified = User::VERIFIED_USER;
+        $user->verification_token = null;
+
+        $user->save();
+
+        return $this->showMessage('The account has been verified succesfully');
+    }
+
 }
+
