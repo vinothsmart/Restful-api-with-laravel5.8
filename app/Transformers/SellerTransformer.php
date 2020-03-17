@@ -2,6 +2,7 @@
 
 namespace App\Transformers;
 
+use App\Seller;
 use League\Fractal\TransformerAbstract;
 
 class SellerTransformer extends TransformerAbstract
@@ -29,7 +30,7 @@ class SellerTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform()
+    public function transform(Seller $seller)
     {
         return [
             'identifier' => (int)$seller->id,
