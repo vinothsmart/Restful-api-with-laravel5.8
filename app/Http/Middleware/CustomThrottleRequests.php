@@ -3,18 +3,32 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Traits\ApiResponser;
+use Illuminate\Routing\Middleware\ThrottleRequests;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
 
-class CustomThrottleRequests
+class CustomThrottleRequests extends ThrottleRequests
 {
+    use ApiResponser;
     /**
-     * Handle an incoming request.
+     * Create a 'too many attempts' exception.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  string  $key
+     * @param  int  $maxAttempts
+     * @return \Illuminate\Http\Exceptions\ThrottleRequestsException
      */
-    public function handle($request, Closure $next)
+    protected function buildException($key, $maxAttempts)
     {
-        return $next($request);
+        $retryAfter = $this->getTimeUntilNextRetry($key);
+
+        $headers = $this->getHeaders(
+            $maxAttempts,
+            $this->calculateRemainingAttempts($key, $maxAttempts, $retryAfter),
+            $retryAfter
+        );
+
+        return new ThrottleRequestsException(
+            'Too Many Attempts.', null, $headers
+        );
     }
 }
