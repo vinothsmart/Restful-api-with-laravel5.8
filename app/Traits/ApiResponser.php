@@ -31,11 +31,11 @@ trait ApiResponser
 
     }
 
-    protected function showOne(Model $instance, $code = 200)
+    protected function showOne(Model $model, $code = 200)
     {
-        $transformer = $instance->transformer;
+        $transformer = $model->transformer;
  
-        $instance =  $this->transformData($instance, $transformer);
+        $instance =  $this->transformData($model, $transformer);
        
         return $this->successResponse($instance, $code);
     }
