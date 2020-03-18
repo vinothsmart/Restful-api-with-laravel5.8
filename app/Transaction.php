@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use App\Buyer;
@@ -15,11 +14,7 @@ class Transaction extends Model
     public $transformer = TransactionTransformer::class;
     protected $dates = ['deleted_at'];
 
-    protected $fillable = [
-        'quantity',
-        'buyer_id',
-        'product_id'
-    ];
+    protected $fillable = ['quantity', 'buyer_id', 'product_id'];
 
     public function buyer()
     {
@@ -31,3 +26,4 @@ class Transaction extends Model
         return $this->belongsTo('App\Product');
     }
 }
+

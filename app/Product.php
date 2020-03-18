@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use App\Seller;
@@ -20,18 +19,9 @@ class Product extends Model
     public $transformer = ProductTransformer::class;
     protected $dates = ['deleted_at'];
 
-    protected $fillable = [
-        'name',
-        'description',
-        'quantity',
-        'status',
-        'image',
-        'seller_id',
-    ];
+    protected $fillable = ['name', 'description', 'quantity', 'status', 'image', 'seller_id', ];
 
-    protected $hidden = [
-        'pivot'
-    ];
+    protected $hidden = ['pivot'];
 
     public function isAvailable()
     {
@@ -52,5 +42,5 @@ class Product extends Model
         return $this->belongsToMany('App\Category');
     }
 
-
 }
+

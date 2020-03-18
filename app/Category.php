@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use App\Product;
@@ -13,18 +12,14 @@ class Category extends Model
 
     public $transformer = CategoryTransformer::class;
     protected $dates = ['deleted_at'];
-    
-    protected $fillable = [
-        'name',
-        'description'
-    ];
 
-    protected $hidden = [
-        'pivot'
-    ];
+    protected $fillable = ['name', 'description'];
+
+    protected $hidden = ['pivot'];
 
     public function products()
     {
         return $this->belongsToMany('App\Product');
     }
 }
+

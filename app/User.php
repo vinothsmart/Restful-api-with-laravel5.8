@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Support\Str;
@@ -13,8 +12,8 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes;
 
-    const VERIFIED_USER ='1';
-    const UNVERIFIED_USER ='0';
+    const VERIFIED_USER = '1';
+    const UNVERIFIED_USER = '0';
 
     const ADMIN_USER = 'true';
     const REGULAR_USER = 'false';
@@ -28,24 +27,15 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 
-        'email', 
-        'password',
-        'verified',
-        'verification_token',
-        'admin',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'verified', 'verification_token', 'admin', ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 
-        'remember_token',
-        // 'verification_token'
+    protected $hidden = ['password', 'remember_token',
+    // 'verification_token'
     ];
 
     /**
@@ -53,19 +43,20 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $casts = ['email_verified_at' => 'datetime', ];
 
-    public function setNameAttribute($name) {
+    public function setNameAttribute($name)
+    {
         $this->attributes['name'] = strtolower($name);
     }
 
-    public function getNameAttribute($name) {
+    public function getNameAttribute($name)
+    {
         return ucwords($name);
     }
 
-    public function setEmailAttribute($email) {
+    public function setEmailAttribute($email)
+    {
         $this->attributes['email'] = strtolower($email);
     }
 
@@ -84,3 +75,4 @@ class User extends Authenticatable
         return Str::random(40);
     }
 }
+
