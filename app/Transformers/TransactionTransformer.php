@@ -2,6 +2,7 @@
 
 namespace App\Transformers;
 
+use App\Transaction;
 use League\Fractal\TransformerAbstract;
 
 class TransactionTransformer extends TransformerAbstract
@@ -39,6 +40,28 @@ class TransactionTransformer extends TransformerAbstract
             'creationDate' => (string)$transaction->created_at,
             'lastChange' => (string)$transaction->updated_at,
             'deletedDate' => isset($transaction->deleted_at) ? (string) $transaction->deleted_at : null,
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('transactions.show', $transaction->id),
+                ],
+                [
+                    'rel' => 'transaction.categories',
+                    'href' => route('transactions.categories.index', $transaction->id),
+                ],
+                [
+                    'rel' => 'transaction.transactions',
+                    'href' => route('transactions.sellers.index', $transaction->id),
+                ],
+                [
+                    'rel' => 'buyer',
+                    'href' => route('buyers.show', $transaction->id),
+                ],
+                [
+                    'rel' => 'product',
+                    'href' => route('products.show', $transaction->id),
+                ] 
+            ] 
         ];
     }
 
