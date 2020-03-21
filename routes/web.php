@@ -13,8 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
-Auth::routes();
+Auth::routes([ 'register' => false ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
