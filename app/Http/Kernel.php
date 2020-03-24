@@ -42,6 +42,7 @@ class Kernel extends HttpKernel
             'signature:X-Application-Name',
             'throttle:10,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'bindings',
         ],
     ];
 
