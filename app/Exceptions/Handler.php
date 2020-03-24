@@ -72,7 +72,7 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof AuthenticationException) {
-            $this->unauthenticated($exception, $request);
+            return $this->unauthenticated($exception, $request);
         }
 
         if ($exception instanceof AuthorizationException) {
@@ -135,7 +135,15 @@ class Handler extends ExceptionHandler
     */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
+        if($this->isFrontend($request)) {
+            return redirect()->guest('login');
+        } 
         return $this->errorResponse('Unauthenticated', 401);
+    }
+
+    private function isFrontend($request)
+    {
+        return $request->acceptsHtml() && collect($request->route()->middleware())->contains('web');
     }
 
 }
