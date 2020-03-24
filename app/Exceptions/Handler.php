@@ -72,12 +72,12 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof AuthenticationException) {
-            return $this->unauthenticated($exception, $request);
+            return $this->unauthenticated($request, $exception);
         }
-
+  
         if ($exception instanceof AuthorizationException) {
             return $this->errorResponse($exception->getMessage(), 403);
-        }
+        } 
 
         if ($exception instanceof NotFoundHttpException) {
             return $this->errorResponse('The specified URL cannot be found', 404);
