@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Controllers\\Category\\CategorySellerController' => $baseDir . '/app/Http/Controllers/Category/CategorySellerController.php',
     'App\\Http\\Controllers\\Category\\CategoryTransactionController' => $baseDir . '/app/Http/Controllers/Category/CategoryTransactionController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\Product\\ProductBuyerController' => $baseDir . '/app/Http/Controllers/Product/ProductBuyerController.php',
     'App\\Http\\Controllers\\Product\\ProductBuyerTransactionController' => $baseDir . '/app/Http/Controllers/Product/ProductBuyerTransactionController.php',
     'App\\Http\\Controllers\\Product\\ProductCategoryController' => $baseDir . '/app/Http/Controllers/Product/ProductCategoryController.php',

@@ -557,6 +557,7 @@ class ComposerStaticInitbc672205f9fd4442ebba9c39b17cbd62
         'App\\Http\\Controllers\\Category\\CategorySellerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Category/CategorySellerController.php',
         'App\\Http\\Controllers\\Category\\CategoryTransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Category/CategoryTransactionController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\Product\\ProductBuyerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Product/ProductBuyerController.php',
         'App\\Http\\Controllers\\Product\\ProductBuyerTransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Product/ProductBuyerTransactionController.php',
         'App\\Http\\Controllers\\Product\\ProductCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Product/ProductCategoryController.php',
