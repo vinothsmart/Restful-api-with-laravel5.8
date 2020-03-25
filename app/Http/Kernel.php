@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'signature' => \App\Http\Middleware\SignatureMiddleware::class,
         'transform.input' => \App\Http\Middleware\TransfromInput::class,
+        'client.credentials' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
     ];
 
     /**
