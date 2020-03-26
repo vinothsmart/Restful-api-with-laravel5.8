@@ -23,6 +23,6 @@ Route::get('/home/my-clients', 'HomeController@getClients')->name('personal-clie
 Route::get('/home/authorized-clients', 'HomeController@getAuthorizedClients')->name('authorized-clients');
 
 
-Auth::routes();
+Auth::routes([ 'register' => false ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
