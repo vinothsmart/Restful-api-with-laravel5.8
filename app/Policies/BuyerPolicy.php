@@ -39,10 +39,10 @@ class BuyerPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
-    {
-        //
-    }
+    // public function create(User $user)
+    // {
+    //     //
+    // }
 
     /**
      * Determine whether the user can update the buyer.
@@ -51,10 +51,10 @@ class BuyerPolicy
      * @param  \App\Buyer  $buyer
      * @return mixed
      */
-    public function update(User $user, Buyer $buyer)
-    {
-        //
-    }
+    // public function update(User $user, Buyer $buyer)
+    // {
+    //     //
+    // }
 
     /**
      * Determine whether the user can delete the buyer.
@@ -63,7 +63,7 @@ class BuyerPolicy
      * @param  \App\Buyer  $buyer
      * @return mixed
      */
-    public function delete(User $user, Buyer $buyer)
+    public function purchase(User $user, Buyer $buyer)
     {
         //
     }
@@ -75,10 +75,10 @@ class BuyerPolicy
      * @param  \App\Buyer  $buyer
      * @return mixed
      */
-    public function restore(User $user, Buyer $buyer)
-    {
-        //
-    }
+    // public function restore(User $user, Buyer $buyer)
+    // {
+    //     //
+    // }
 
     /**
      * Determine whether the user can permanently delete the buyer.
@@ -87,8 +87,8 @@ class BuyerPolicy
      * @param  \App\Buyer  $buyer
      * @return mixed
      */
-    public function forceDelete(User $user, Buyer $buyer)
-    {
-        //
-    }
+    // public function forceDelete(User $user, Buyer $buyer)
+    // {
+    //     //
+    // }
 }
