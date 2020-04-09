@@ -23,7 +23,7 @@ class BuyerPolicy
     }
 
     /**
-     * Determine whether the user can delete the buyer.
+     * Determine whether the user can purchase the something.
      *
      * @param  \App\User  $user
      * @param  \App\Buyer  $buyer
@@ -33,5 +33,4 @@ class BuyerPolicy
     {
         return $user->id == $buyer->id;
     }
-    // }
 }
